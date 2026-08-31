@@ -1,0 +1,227 @@
+.page {
+  /* wrapper */
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.centeredHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+/* ====== MISSION ====== */
+.missionLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.missionText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.missionBody {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 0.975rem;
+}
+
+.missionVisual {
+  /* visual card */
+}
+
+.visualCard {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.visualStat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.visualStatNum {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.visualStatLabel {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 500;
+}
+
+/* ====== VALUES ====== */
+.valuesSection {
+  background: var(--white);
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.valueCard {
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  padding: 32px 24px;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.valueCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold);
+}
+
+.valueIcon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.valueTitle {
+  font-size: 1.1rem;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.valueDescription {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ====== TEAM ====== */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.teamCard {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 32px 24px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.teamCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.teamAvatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.3rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.teamName {
+  font-size: 1rem;
+  color: var(--navy);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.teamRole {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ====== CONTACT ====== */
+.contactSection {
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+  padding: 80px 0;
+}
+
+.contactBox {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.contactBox h2 {
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.contactBox p {
+  color: rgba(255,255,255,0.65);
+  font-size: 1rem;
+  max-width: 420px;
+}
+
+.contactActions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .missionLayout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .visualCard {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
