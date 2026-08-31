@@ -1,0 +1,204 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold), var(--shadow-gold);
+}
+
+/* Image */
+.imageWrapper {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.06);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(9,24,41,0.4) 100%);
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.03em;
+}
+
+.levelBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+/* Body */
+.body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.categoryBadge {
+  align-self: flex-start;
+  font-size: 0.7rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.description {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.instructor,
+.duration {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Rating */
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stars {
+  display: flex;
+  gap: 1px;
+  font-size: 0.9rem;
+}
+
+.starFilled {
+  color: var(--gold);
+}
+
+.starEmpty {
+  color: #cbd5e0;
+}
+
+.ratingNum {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+}
+
+/* Card Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.priceSeats {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.originalPrice {
+  font-size: 0.9rem;
+  color: #e53e3e; /* Red color for original price */
+  text-decoration: line-through;
+  font-weight: 500;
+  align-self: flex-end;
+}
+
+/* Toggle Button */
+.toggleBtn {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: var(--bg);
+  color: var(--navy);
+  border: 2px solid var(--border);
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.toggleBtn:hover {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+
+.toggleBtn.selected {
+  background: var(--gold);
+  color: var(--navy-dark);
+  border-color: var(--gold);
+}
+
+.toggleBtn.selected:hover {
+  background: #e09418;
+  border-color: #e09418;
+}

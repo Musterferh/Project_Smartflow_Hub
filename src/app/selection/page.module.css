@@ -1,0 +1,205 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Course List */
+.courseList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.listTitle {
+  font-size: 1.3rem;
+  color: var(--navy);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.courseRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.courseRow:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.courseImage {
+  position: relative;
+  width: 80px;
+  height: 60px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.courseInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.courseTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  transition: var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.courseTitle:hover {
+  color: var(--gold-dark);
+}
+
+.courseMeta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.courseMeta span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.courseRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.coursePrice {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+/* Summary Card */
+.summaryCard {
+  position: sticky;
+  top: 88px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summaryTitle {
+  font-size: 1.2rem;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.summaryRows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.summaryCourseName {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.summaryPrice {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+
+.totalPrice {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gold-dark);
+}
+
+.registerBtn {
+  width: 100%;
+  justify-content: center;
+}
+
+.continueBtn {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+.secureNote {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .summaryCard {
+    position: relative;
+    top: unset;
+  }
+}
+
+@media (max-width: 600px) {
+  .courseRow {
+    flex-wrap: wrap;
+  }
+
+  .courseRight {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
