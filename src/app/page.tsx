@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { featuredCourses, courses } from '@/data/courses';
 import CourseCard from '@/components/CourseCard/CourseCard';
+import { Search, CheckCircle, GraduationCap, Rocket, ArrowRight } from 'lucide-react';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -20,17 +21,17 @@ const stats = [
 
 const steps = [
   {
-    icon: '🔍',
+    icon: <Search size={32} />,
     title: 'Browse Courses',
     description: 'Explore our curated catalog of expert-led courses across 5 categories.',
   },
   {
-    icon: '✅',
+    icon: <CheckCircle size={32} />,
     title: 'Build Your Selection',
     description: 'Add your favorite courses to your selection — mix and match freely.',
   },
   {
-    icon: '🎓',
+    icon: <GraduationCap size={32} />,
     title: 'Register & Learn',
     description: 'Complete registration in minutes and start your learning journey immediately.',
   },
@@ -70,7 +71,7 @@ export default function HomePage() {
         </div>
         <div className={`container ${styles.heroContent}`}>
           <div className={styles.heroBadge}>
-            🚀 &nbsp;The Future of Online Learning
+            <Rocket size={16} style={{ marginRight: '8px' }} /> The Future of Online Learning
           </div>
           <h1 className={styles.heroTitle}>
             Unlock Your Potential with{' '}
@@ -82,7 +83,7 @@ export default function HomePage() {
           </p>
           <div className={styles.heroCtas}>
             <Link href="/courses" className="btn btn-primary btn-lg">
-              Browse Courses →
+              Browse Courses <ArrowRight size={16} style={{ marginLeft: '8px' }} />
             </Link>
             <Link href="/about" className="btn btn-outline btn-lg">
               Learn More

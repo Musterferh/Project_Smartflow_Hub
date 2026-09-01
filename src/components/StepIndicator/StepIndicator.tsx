@@ -1,3 +1,4 @@
+import { Check } from 'lucide-react';
 import styles from './StepIndicator.module.css';
 
 interface StepIndicatorProps {
@@ -17,7 +18,7 @@ export default function StepIndicator({ steps, currentStep }: StepIndicatorProps
           <div key={step} className={styles.stepGroup}>
             <div className={`${styles.step} ${isCompleted ? styles.completed : ''} ${isActive ? styles.active : ''}`}>
               <div className={styles.circle}>
-                {isCompleted ? '✓' : stepNum}
+                {isCompleted ? <Check size={16} /> : stepNum}
               </div>
               <span className={styles.label}>{step}</span>
             </div>

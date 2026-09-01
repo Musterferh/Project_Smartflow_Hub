@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCourseContext } from '@/context/CourseContext';
+import { ClipboardList, User, Clock, BarChart, ArrowRight, ArrowLeft, Lock } from 'lucide-react';
 import styles from './page.module.css';
 
 export default function SelectionPage() {
@@ -20,7 +21,7 @@ export default function SelectionPage() {
         <div className="section">
           <div className="container">
             <div className="empty-state">
-              <div className="empty-state-icon">📋</div>
+              <div className="empty-state-icon"><ClipboardList size={48} strokeWidth={1.5} /></div>
               <h3>Your selection is empty</h3>
               <p>
                 Browse our catalog and add courses to your selection. You can register for multiple courses at once!
@@ -65,11 +66,9 @@ export default function SelectionPage() {
                     <Link href={`/courses/${course.id}`} className={styles.courseTitle}>
                       {course.title}
                     </Link>
-                    <div className={styles.courseMeta}>
-                      <span>👤 {course.instructor}</span>
-                      <span>⏱ {course.duration}</span>
-                      <span>📊 {course.level}</span>
-                    </div>
+                      <span><User size={14} style={{ marginRight: '4px', verticalAlign: 'text-bottom' }} /> {course.instructor}</span>
+                      <span><Clock size={14} style={{ marginRight: '4px', verticalAlign: 'text-bottom' }} /> {course.duration}</span>
+                      <span><BarChart size={14} style={{ marginRight: '4px', verticalAlign: 'text-bottom' }} /> {course.level}</span>
                   </div>
                   <div className={styles.courseRight}>
                     <span className={styles.coursePrice}>₦{course.price.toLocaleString()}</span>
@@ -109,15 +108,15 @@ export default function SelectionPage() {
                 href="/register"
                 className={`btn btn-primary btn-lg ${styles.registerBtn}`}
               >
-                Proceed to Registration →
+                Proceed to Registration <ArrowRight size={16} style={{ marginLeft: '8px' }} />
               </Link>
 
               <Link href="/courses" className={`btn btn-secondary ${styles.continueBtn}`}>
-                ← Add More Courses
+                <ArrowLeft size={16} style={{ marginRight: '8px' }} /> Add More Courses
               </Link>
 
               <p className={styles.secureNote}>
-                🔒 &nbsp;Secure & encrypted registration
+                <Lock size={14} style={{ marginRight: '4px', verticalAlign: 'middle' }} /> Secure & encrypted registration
               </p>
             </div>
           </div>

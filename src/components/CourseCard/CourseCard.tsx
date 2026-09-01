@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Course } from '@/types';
 import { useCourseContext } from '@/context/CourseContext';
+import { Star, User, Clock, Check, Plus } from 'lucide-react';
 import styles from './CourseCard.module.css';
 
 function getCategoryBadgeClass(category: string): string {
@@ -26,7 +27,7 @@ function renderStars(rating: number) {
   for (let i = 0; i < 5; i++) {
     stars.push(
       <span key={i} className={i < full ? styles.starFilled : styles.starEmpty}>
-        ★
+        <Star size={14} fill="currentColor" />
       </span>
     );
   }
@@ -65,7 +66,7 @@ export default function CourseCard({ course, compact = false }: CourseCardProps)
         />
         <div className={styles.imageOverlay} />
         {course.featured && (
-          <span className={styles.featuredBadge}>⭐ Featured</span>
+          <span className={styles.featuredBadge}><Star size={12} fill="currentColor" style={{ marginRight: '4px' }} /> Featured</span>
         )}
         <span className={`badge ${getLevelBadgeClass(course.level)} ${styles.levelBadge}`}>
           {course.level}
@@ -86,8 +87,8 @@ export default function CourseCard({ course, compact = false }: CourseCardProps)
 
         {/* Meta */}
         <div className={styles.meta}>
-          <span className={styles.instructor}>👤 {course.instructor}</span>
-          <span className={styles.duration}>⏱ {course.duration}</span>
+          <span className={styles.instructor}><User size={14} style={{ marginRight: '4px' }} /> {course.instructor}</span>
+          <span className={styles.duration}><Clock size={14} style={{ marginRight: '4px' }} /> {course.duration}</span>
         </div>
 
         {/* Rating */}
@@ -111,7 +112,7 @@ export default function CourseCard({ course, compact = false }: CourseCardProps)
             onClick={handleToggle}
             aria-label={selected ? 'Remove from selection' : 'Add to selection'}
           >
-            {selected ? '✓ Selected' : '+ Select'}
+            {selected ? <><Check size={16} style={{ marginRight: '4px' }} /> Selected</> : <><Plus size={16} style={{ marginRight: '4px' }} /> Select</>}
           </button>
         </div>
       </div>

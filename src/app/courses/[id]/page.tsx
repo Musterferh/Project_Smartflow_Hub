@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { getCourseById, getCoursesByCategory } from '@/data/courses';
 import { useCourseContext } from '@/context/CourseContext';
 import CourseCard from '@/components/CourseCard/CourseCard';
+import { ArrowLeft, User, Clock, BarChart, CheckCircle2, Star, Check, Plus, ArrowRight, Lock } from 'lucide-react';
 import styles from './page.module.css';
 
 function getCategoryBadgeClass(category: string): string {
@@ -45,7 +46,7 @@ export default function CourseDetailPage({ params }: PageProps) {
       <div className={styles.breadcrumb}>
         <div className="container">
           <Link href="/courses" className={styles.backLink}>
-            ← Back to Courses
+            <ArrowLeft size={16} style={{ marginRight: '8px' }} /> Back to Courses
           </Link>
           <span className={styles.breadcrumbSep}>/</span>
           <span className={styles.breadcrumbCurrent}>{course.title}</span>
@@ -69,7 +70,7 @@ export default function CourseDetailPage({ params }: PageProps) {
           </span>
           <h1 className={styles.courseTitle}>{course.title}</h1>
           <p className={styles.courseMeta}>
-            👤 {course.instructor} &nbsp;•&nbsp; ⏱ {course.duration} &nbsp;•&nbsp; 📊 {course.level}
+            <User size={16} style={{ marginRight: '4px', verticalAlign: 'middle' }} /> {course.instructor} &nbsp;•&nbsp; <Clock size={16} style={{ marginRight: '4px', verticalAlign: 'middle' }} /> {course.duration} &nbsp;•&nbsp; <BarChart size={16} style={{ marginRight: '4px', verticalAlign: 'middle' }} /> {course.level}
           </p>
         </div>
       </div>
@@ -93,12 +94,12 @@ export default function CourseDetailPage({ params }: PageProps) {
             <section className={styles.card}>
               <h2 className={styles.sectionTitle}>What You&apos;ll Learn</h2>
               <ul className={styles.learnList}>
-                <li>✅ Industry-relevant skills taught by expert practitioners</li>
-                <li>✅ Hands-on projects and real-world case studies</li>
-                <li>✅ Weekly live sessions and Q&A with the instructor</li>
-                <li>✅ Certificate of completion upon finishing the course</li>
-                <li>✅ Lifetime access to course materials and updates</li>
-                <li>✅ Private community of fellow learners</li>
+                <li><CheckCircle2 size={16} style={{ marginRight: '8px', color: '#10b981', verticalAlign: 'middle' }} /> Industry-relevant skills taught by expert practitioners</li>
+                <li><CheckCircle2 size={16} style={{ marginRight: '8px', color: '#10b981', verticalAlign: 'middle' }} /> Hands-on projects and real-world case studies</li>
+                <li><CheckCircle2 size={16} style={{ marginRight: '8px', color: '#10b981', verticalAlign: 'middle' }} /> Weekly live sessions and Q&A with the instructor</li>
+                <li><CheckCircle2 size={16} style={{ marginRight: '8px', color: '#10b981', verticalAlign: 'middle' }} /> Certificate of completion upon finishing the course</li>
+                <li><CheckCircle2 size={16} style={{ marginRight: '8px', color: '#10b981', verticalAlign: 'middle' }} /> Lifetime access to course materials and updates</li>
+                <li><CheckCircle2 size={16} style={{ marginRight: '8px', color: '#10b981', verticalAlign: 'middle' }} /> Private community of fellow learners</li>
               </ul>
             </section>
 
@@ -126,28 +127,34 @@ export default function CourseDetailPage({ params }: PageProps) {
                   )}
                 </div>
                 <div className={styles.rating}>
-                  <span className={styles.stars}>★★★★★</span>
+                  <span className={styles.stars}>
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                  </span>
                   <span className={styles.ratingValue}>{course.rating}</span>
                 </div>
               </div>
 
               <div className={styles.metaList}>
                 <div className={styles.metaItem}>
-                  <span className={styles.metaIcon}>⏱</span>
+                  <span className={styles.metaIcon}><Clock size={20} /></span>
                   <div>
                     <div className={styles.metaLabel}>Duration</div>
                     <div className={styles.metaValue}>{course.duration}</div>
                   </div>
                 </div>
                 <div className={styles.metaItem}>
-                  <span className={styles.metaIcon}>👤</span>
+                  <span className={styles.metaIcon}><User size={20} /></span>
                   <div>
                     <div className={styles.metaLabel}>Instructor</div>
                     <div className={styles.metaValue}>{course.instructor}</div>
                   </div>
                 </div>
                 <div className={styles.metaItem}>
-                  <span className={styles.metaIcon}>📊</span>
+                  <span className={styles.metaIcon}><BarChart size={20} /></span>
                   <div>
                     <div className={styles.metaLabel}>Level</div>
                     <div className={styles.metaValue}>{course.level}</div>
@@ -160,17 +167,17 @@ export default function CourseDetailPage({ params }: PageProps) {
                 onClick={handleToggle}
                 id={`detail-select-${course.id}`}
               >
-                {selected ? '✓ Added to Selection' : '+ Add to My Selection'}
+                {selected ? <><Check size={20} style={{ marginRight: '8px' }} /> Added to Selection</> : <><Plus size={20} style={{ marginRight: '8px' }} /> Add to My Selection</>}
               </button>
 
               {selected && (
                 <Link href="/selection" className={`btn btn-secondary btn-lg ${styles.viewSelectionBtn}`}>
-                  View My Selection →
+                  View My Selection <ArrowRight size={20} style={{ marginLeft: '8px' }} />
                 </Link>
               )}
 
               <p className={styles.moneyBack}>
-                🔒 &nbsp;Secure registration &nbsp;•&nbsp; 30-day money-back guarantee
+                <Lock size={14} style={{ marginRight: '4px', verticalAlign: 'middle' }} /> Secure registration &nbsp;•&nbsp; 30-day money-back guarantee
               </p>
             </div>
           </aside>

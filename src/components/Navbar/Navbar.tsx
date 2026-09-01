@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { useCourseContext } from '@/context/CourseContext';
+import { Zap } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
@@ -34,7 +35,7 @@ export default function Navbar() {
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoIcon}>⚡</span>
+          <Zap className={styles.logoIcon} size={24} />
           <span>
             <span className={styles.logoMain}>SMARTFLOW</span>
             <span className={styles.logoSub}> HUB</span>

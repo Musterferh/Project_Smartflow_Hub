@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useCourseContext } from '@/context/CourseContext';
 import StepIndicator from '@/components/StepIndicator/StepIndicator';
+import { ShoppingCart, ArrowRight, ArrowLeft, Check, PartyPopper } from 'lucide-react';
 import { RegistrationData } from '@/types';
 import styles from './page.module.css';
 
@@ -89,7 +90,7 @@ export default function RegisterPage() {
         <div className="section">
           <div className="container">
             <div className="empty-state">
-              <div className="empty-state-icon">🛒</div>
+              <div className="empty-state-icon"><ShoppingCart size={48} strokeWidth={1.5} /></div>
               <h3>No courses selected</h3>
               <p>Please add courses to your selection before registering.</p>
               <Link href="/courses" className="btn btn-primary btn-lg">
@@ -189,7 +190,7 @@ export default function RegisterPage() {
                 <div className={styles.actions}>
                   <div />
                   <button className="btn btn-primary btn-lg" onClick={handleNext}>
-                    Next: Review Selection →
+                    Next: Review Selection <ArrowRight size={16} style={{ marginLeft: '8px' }} />
                   </button>
                 </div>
               </div>
@@ -254,10 +255,10 @@ export default function RegisterPage() {
 
                 <div className={styles.actions}>
                   <button className="btn btn-secondary btn-lg" onClick={handleBack}>
-                    ← Back
+                    <ArrowLeft size={16} style={{ marginRight: '8px' }} /> Back
                   </button>
                   <button className="btn btn-primary btn-lg" onClick={handleSubmit}>
-                    Confirm Registration ✓
+                    Confirm Registration <Check size={16} style={{ marginLeft: '8px' }} />
                   </button>
                 </div>
               </div>
@@ -266,7 +267,7 @@ export default function RegisterPage() {
             {/* ===== STEP 3: Confirmation ===== */}
             {currentStep === 3 && (
               <div className={`${styles.stepContent} ${styles.successStep} animate-fade-in`}>
-                <div className={styles.successIcon}>🎉</div>
+                <div className={styles.successIcon}><PartyPopper size={48} strokeWidth={1.5} /></div>
                 <h2 className={styles.successTitle}>Registration Successful!</h2>
                 <p className={styles.successSubtitle}>
                   Welcome aboard! Your registration has been confirmed.
