@@ -7,20 +7,25 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
+      <div className={styles.footerGlow} />
       <div className={`container ${styles.inner}`}>
         <div className={styles.top}>
           {/* Brand */}
           <div className={styles.brand}>
-            <div className={styles.logo}>
+<Link href="/" className={styles.logo}>
               <Zap className={styles.logoIcon} size={24} />
               <span>
                 <span className={styles.logoMain}>SMARTFLOW</span>
                 <span className={styles.logoSub}> HUB</span>
               </span>
-            </div>
+            </Link>
             <p className={styles.tagline}>
-              Empowering lifelong learners with world-class courses across technology, business, design, and wellness.
+              Empowering ambitious learners worldwide with expert-led courses across technology, business, design, and development.
             </p>
+            <div className={styles.brandBadge}>
+              <span className={styles.badgePulse} />
+              <span>10,000+ Active Students</span>
+            </div>
           </div>
 
           {/* Links */}
@@ -30,17 +35,16 @@ export default function Footer() {
               <ul>
                 <li><Link href="/courses">All Courses</Link></li>
                 <li><Link href="/selection">My Selection</Link></li>
-                <li><Link href="/register">Register</Link></li>
+                <li><Link href="/register">Register Free</Link></li>
               </ul>
             </div>
 
             <div className={styles.linkGroup}>
               <h4 className={styles.groupTitle}>Categories</h4>
               <ul>
-                <li><Link href="/courses?category=Technology+%26+Programming">Technology</Link></li>
-                <li><Link href="/courses?category=Business+%26+Entrepreneurship">Business</Link></li>
-                <li><Link href="/courses?category=Design+%26+Creative+Arts">Design</Link></li>
-                <li><Link href="/courses?category=Health+%26+Wellness">Health</Link></li>
+                <li><Link href="/courses">Foundation & AI</Link></li>
+                <li><Link href="/courses">Comprehensive Dev</Link></li>
+                <li><Link href="/courses">Advanced Web</Link></li>
               </ul>
             </div>
 
@@ -49,7 +53,7 @@ export default function Footer() {
               <ul>
                 <li><Link href="/about">About Us</Link></li>
                 <li><Link href="/about">Instructors</Link></li>
-                <li><Link href="/about">Contact</Link></li>
+                <li><Link href="/about">Contact & Support</Link></li>
               </ul>
             </div>
           </div>
@@ -60,9 +64,11 @@ export default function Footer() {
             © {currentYear} SMARTFLOW HUB. All rights reserved.
           </p>
           <div className={styles.bottomLinks}>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
+            <Link href="#">Privacy Policy</Link>
+            <span className={styles.dot}>•</span>
+            <Link href="#">Terms of Service</Link>
+            <span className={styles.dot}>•</span>
+            <Link href="#">Cookie Policy</Link>
           </div>
         </div>
       </div>

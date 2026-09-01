@@ -1,18 +1,33 @@
 .footer {
-  background: var(--navy-dark);
+  position: relative;
+  background: linear-gradient(180deg, #091829 0%, #050e1a 100%);
   color: rgba(255, 255, 255, 0.7);
-  padding-top: 64px;
+  padding-top: 80px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.footerGlow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(245, 166, 35, 0.06) 0%, rgba(0, 191, 165, 0.04) 50%, transparent 80%);
+  pointer-events: none;
 }
 
 .inner {
-  /* uses .container from globals */
+  position: relative;
+  z-index: 1;
 }
 
 .top {
   display: grid;
-  grid-template-columns: 1.5fr 2fr;
+  grid-template-columns: 1.4fr 2fr;
   gap: 64px;
-  padding-bottom: 48px;
+  padding-bottom: 56px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -20,39 +35,66 @@
 .brand {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  width: fit-content;
 }
 
 .logoIcon {
-  font-size: 1.6rem;
-  filter: drop-shadow(0 0 6px rgba(245,166,35,0.7));
+  font-size: 1.7rem;
+  filter: drop-shadow(0 0 10px rgba(245, 166, 35, 0.8));
 }
 
 .logoMain {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: var(--white);
+  letter-spacing: -0.02em;
 }
 
 .logoSub {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: var(--gold);
+  letter-spacing: -0.02em;
 }
 
 .tagline {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.5);
-  max-width: 300px;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 320px;
+}
+
+.brandBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--gold-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.badgePulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+  animation: pulse-gold 2s infinite;
 }
 
 /* Links */
@@ -63,28 +105,30 @@
 }
 
 .linkGroup h4 {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--gold);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .linkGroup ul {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .linkGroup a {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.55);
-  transition: var(--transition);
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.65);
+  transition: all 0.25s ease;
+  display: inline-block;
 }
 
 .linkGroup a:hover {
   color: var(--white);
+  transform: translateX(4px);
 }
 
 /* Bottom */
@@ -92,26 +136,33 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 0;
-  font-size: 0.85rem;
+  padding: 28px 0;
+  font-size: 0.88rem;
 }
 
 .copyright {
-  color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 500;
 }
 
 .bottomLinks {
   display: flex;
-  gap: 24px;
+  align-items: center;
+  gap: 16px;
 }
 
 .bottomLinks a {
-  color: rgba(255,255,255,0.35);
-  transition: var(--transition);
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.25s ease;
 }
 
 .bottomLinks a:hover {
   color: var(--gold);
+}
+
+.dot {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
 }
 
 /* Responsive */
@@ -133,11 +184,7 @@
 
   .bottom {
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     text-align: center;
-  }
-
-  .bottomLinks {
-    gap: 16px;
   }
 }
