@@ -7,9 +7,23 @@
   overflow: hidden;
   transition: var(--transition);
   border: 2px solid transparent;
+  color: inherit;
+}
+
+.imageLink {
+  display: block;
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
+}
+
+.titleLink {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.titleLink:hover {
+  color: var(--gold);
 }
 
 .card:hover {
@@ -81,7 +95,7 @@
 .title {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--white);
   line-height: 1.35;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -126,13 +140,13 @@
 }
 
 .starEmpty {
-  color: #cbd5e0;
+  color: rgba(255, 255, 255, 0.2);
 }
 
 .ratingNum {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--gold-dark);
+  color: var(--gold-light);
 }
 
 /* Card Footer */
@@ -161,13 +175,13 @@
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 800;
-  color: var(--navy);
+  color: var(--gold);
   line-height: 1;
 }
 
 .originalPrice {
   font-size: 0.9rem;
-  color: #e53e3e; /* Red color for original price */
+  color: rgba(255, 255, 255, 0.4);
   text-decoration: line-through;
   font-weight: 500;
   align-self: flex-end;
@@ -179,17 +193,17 @@
   border-radius: var(--radius-sm);
   font-size: 0.82rem;
   font-weight: 700;
-  background: var(--bg);
-  color: var(--navy);
-  border: 2px solid var(--border);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   transition: var(--transition);
   white-space: nowrap;
 }
 
 .toggleBtn:hover {
-  background: var(--navy);
-  color: var(--white);
-  border-color: var(--navy);
+  background: var(--gold);
+  color: var(--navy-dark);
+  border-color: var(--gold);
 }
 
 .toggleBtn.selected {

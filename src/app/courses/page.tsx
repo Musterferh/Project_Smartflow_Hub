@@ -31,17 +31,21 @@ export default function CoursesPage() {
       {/* Page Hero */}
       <div className="page-hero">
         <div className="container">
-          <h1>Explore All Courses</h1>
-          <p>
-            {courses.length} expert-led courses across 5 categories. Find your next skill and register today.
-          </p>
+          <div className={styles.heroHeader}>
+            <span className={styles.heroBadge}>⚡ Explore Our Catalog</span>
+            <h1>Explore All Courses</h1>
+            <p>
+              {courses.length} expert-led courses across 3 core tracks. Find your next skill and register today.
+            </p>
+          </div>
         </div>
       </div>
 
       <div className="section">
         <div className="container">
-          {/* Search + Filter */}
-          <div className={styles.controls}>
+          {/* Controls Bar: Glassmorphic Search + Category Pills */}
+          <div className={styles.controlsBar}>
+            {/* Search Input */}
             <div className={styles.searchWrapper}>
               <span className={styles.searchIcon}>🔍</span>
               <input
@@ -64,12 +68,14 @@ export default function CoursesPage() {
               )}
             </div>
 
+            {/* Filter Pills */}
             <div className={styles.filterPills} role="group" aria-label="Filter by category">
               <button
                 className={`${styles.pill} ${activeCategory === 'All' ? styles.pillActive : ''}`}
                 onClick={() => setActiveCategory('All')}
               >
-                All ({courses.length})
+                <span>All</span>
+                <span className={styles.pillCount}>{courses.length}</span>
               </button>
               {categories.map((cat) => {
                 const count = courses.filter((c) => c.category === cat).length;
@@ -79,7 +85,8 @@ export default function CoursesPage() {
                     className={`${styles.pill} ${activeCategory === cat ? styles.pillActive : ''}`}
                     onClick={() => setActiveCategory(cat)}
                   >
-                    {cat.split(' &')[0]} ({count})
+                    <span>{cat}</span>
+                    <span className={styles.pillCount}>{count}</span>
                   </button>
                 );
               })}

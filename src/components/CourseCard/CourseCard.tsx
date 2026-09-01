@@ -53,24 +53,26 @@ export default function CourseCard({ course, compact = false }: CourseCardProps)
   };
 
   return (
-    <Link href={`/courses/${course.id}`} className={`${styles.card} ${selected ? styles.selected : ''}`}>
+    <div className={`${styles.card} ${selected ? styles.selected : ''}`}>
       {/* Image */}
-      <div className={styles.imageWrapper}>
-        <Image
-          src={course.imageUrl}
-          alt={course.title}
-          fill
-          className={styles.image}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-        <div className={styles.imageOverlay} />
-        {course.featured && (
-          <span className={styles.featuredBadge}>⭐ Featured</span>
-        )}
-        <span className={`badge ${getLevelBadgeClass(course.level)} ${styles.levelBadge}`}>
-          {course.level}
-        </span>
-      </div>
+      <Link href={`/courses/${course.id}`} className={styles.imageLink}>
+        <div className={styles.imageWrapper}>
+          <Image
+            src={course.imageUrl}
+            alt={course.title}
+            fill
+            className={styles.image}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+          <div className={styles.imageOverlay} />
+          {course.featured && (
+            <span className={styles.featuredBadge}>⭐ Featured</span>
+          )}
+          <span className={`badge ${getLevelBadgeClass(course.level)} ${styles.levelBadge}`}>
+            {course.level}
+          </span>
+        </div>
+      </Link>
 
       {/* Body */}
       <div className={styles.body}>
@@ -78,7 +80,11 @@ export default function CourseCard({ course, compact = false }: CourseCardProps)
           {course.category}
         </span>
 
-        <h3 className={styles.title}>{course.title}</h3>
+        <h3 className={styles.title}>
+          <Link href={`/courses/${course.id}`} className={styles.titleLink}>
+            {course.title}
+          </Link>
+        </h3>
 
         {!compact && (
           <p className={styles.description}>{course.description.slice(0, 100)}...</p>
@@ -107,6 +113,7 @@ export default function CourseCard({ course, compact = false }: CourseCardProps)
             </div>
           </div>
           <button
+            type="button"
             className={`${styles.toggleBtn} ${selected ? styles.selected : ''}`}
             onClick={handleToggle}
             aria-label={selected ? 'Remove from selection' : 'Add to selection'}
@@ -115,6 +122,6 @@ export default function CourseCard({ course, compact = false }: CourseCardProps)
           </button>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
