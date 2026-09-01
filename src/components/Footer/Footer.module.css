@@ -41,14 +41,22 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
   width: fit-content;
 }
 
-.logoIcon {
-  font-size: 1.7rem;
-  filter: drop-shadow(0 0 10px rgba(245, 166, 35, 0.8));
+.logoImage {
+  object-fit: contain;
+  background-color: #ffffff;
+  padding: 4px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logoImage {
+  transform: scale(1.05);
 }
 
 .logoMain {

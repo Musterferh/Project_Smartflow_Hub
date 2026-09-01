@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { featuredCourses, courses } from '@/data/courses';
 import CourseCard from '@/components/CourseCard/CourseCard';
+import HeroSlider from '@/components/HeroSlider/HeroSlider';
 import { Search, CheckCircle, GraduationCap, Rocket, ArrowRight } from 'lucide-react';
 import styles from './page.module.css';
 
@@ -69,12 +70,7 @@ export default function HomePage() {
     <div className={styles.page}>
       {/* ====== HERO SECTION ====== */}
       <section className={styles.hero}>
-        <div className={styles.heroBg} />
-        <div className={styles.heroOrbs}>
-          <div className={styles.orb1} />
-          <div className={styles.orb2} />
-          <div className={styles.orb3} />
-        </div>
+        <HeroSlider />
         <div className={`container ${styles.heroContent}`}>
           <div className={styles.heroBadge}>
             <Rocket size={16} style={{ marginRight: '8px' }} /> The Future of Online Learning
@@ -136,8 +132,8 @@ export default function HomePage() {
             <div className={styles.aboutVisual}>
               <div className={styles.aboutImageWrapper}>
                 <Image
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
-                  alt="Students learning together"
+                  src="/H8.jpg"
+                  alt="About SMARTFLOW HUB"
                   fill
                   className={styles.aboutImage}
                   sizes="(max-width: 768px) 100vw, 50vw"

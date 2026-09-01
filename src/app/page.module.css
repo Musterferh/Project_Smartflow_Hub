@@ -5,7 +5,7 @@
 /* ========== HERO ========== */
 .hero {
   position: relative;
-  background: linear-gradient(135deg, #091829 0%, #0f2444 55%, #1a4080 100%);
+  background: transparent;
   min-height: 92vh;
   display: flex;
   flex-direction: column;
