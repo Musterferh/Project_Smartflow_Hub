@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { useCourseContext } from '@/context/CourseContext';
-import { Zap } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
@@ -35,7 +35,7 @@ export default function Navbar() {
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          <Zap className={styles.logoIcon} size={24} />
+          <Image src="/logo.png" alt="SMARTFLOW HUB Logo" width={64} height={64} className={styles.logoImage} />
           <span>
             <span className={styles.logoMain}>SMARTFLOW</span>
             <span className={styles.logoSub}> HUB</span>
