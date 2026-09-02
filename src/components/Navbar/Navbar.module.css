@@ -36,13 +36,21 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
 }
 
-.logoIcon {
-  font-size: 1.6rem;
-  filter: drop-shadow(0 0 6px rgba(245,166,35,0.7));
+.logoImage {
+  object-fit: contain;
+  background-color: #ffffff;
+  padding: 4px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logoImage {
+  transform: scale(1.05);
 }
 
 .logoMain {
