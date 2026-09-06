@@ -147,7 +147,9 @@
 
 .heroSubtitle {
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: rgba(255, 255, 255, 0.7);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   max-width: 600px;
   line-height: 1.7;
   animation: fadeInUp 0.7s 0.2s ease both;
