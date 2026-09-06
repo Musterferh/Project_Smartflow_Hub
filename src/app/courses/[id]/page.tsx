@@ -4,9 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getCourseById, getCoursesByCategory } from '@/data/courses';
-import { useCourseContext } from '@/context/CourseContext';
 import CourseCard from '@/components/CourseCard/CourseCard';
-import { ArrowLeft, User, Clock, BarChart, CheckCircle2, Star, Check, Plus, ArrowRight, Lock } from 'lucide-react';
+import { ArrowLeft, User, Clock, BarChart, CheckCircle2, Star, Plus, ArrowRight, Lock, Check } from 'lucide-react';
 import styles from './page.module.css';
 
 function getCategoryBadgeClass(category: string): string {
@@ -25,23 +24,36 @@ export default function CourseDetailPage({ params }: PageProps) {
   const course = getCourseById(params.id);
   if (!course) notFound();
 
-  const { addCourse, removeCourse, isSelected } = useCourseContext();
-  const selected = isSelected(course.id);
-
   const relatedCourses = getCoursesByCategory(course.category)
     .filter((c) => c.id !== course.id)
     .slice(0, 3);
 
-  const handleToggle = () => {
-    if (selected) {
-      removeCourse(course.id);
-    } else {
-      addCourse(course);
-    }
+  const courseSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: course.title,
+    description: course.description,
+    provider: {
+      '@type': 'Organization',
+      name: 'SMARTFLOW HUB',
+      sameAs: 'https://techhub.smartflowgroupltd.com',
+    },
+    offers: {
+      '@type': 'Offer',
+      price: course.price,
+      priceCurrency: 'NGN',
+      category: 'Paid',
+    },
+    educationalLevel: course.level,
+    image: course.imageUrl,
   };
 
   return (
     <div className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
+      />
       {/* Breadcrumb */}
       <div className={styles.breadcrumb}>
         <div className="container">
@@ -162,19 +174,12 @@ export default function CourseDetailPage({ params }: PageProps) {
                 </div>
               </div>
 
-              <button
-                className={`btn btn-lg ${selected ? styles.selectedBtn : 'btn-primary'} ${styles.addBtn}`}
-                onClick={handleToggle}
-                id={`detail-select-${course.id}`}
+              <Link
+                href={`/register?courseId=${course.id}`}
+                className={`btn btn-lg btn-primary ${styles.addBtn}`}
               >
-                {selected ? <><Check size={20} style={{ marginRight: '8px' }} /> Added to Selection</> : <><Plus size={20} style={{ marginRight: '8px' }} /> Add to My Selection</>}
-              </button>
-
-              {selected && (
-                <Link href="/selection" className={`btn btn-secondary btn-lg ${styles.viewSelectionBtn}`}>
-                  View My Selection <ArrowRight size={20} style={{ marginLeft: '8px' }} />
-                </Link>
-              )}
+                Enroll Now <Check size={20} style={{ marginLeft: '8px' }} />
+              </Link>
 
               <p className={styles.moneyBack}>
                 <Lock size={14} style={{ marginRight: '4px', verticalAlign: 'middle' }} /> Secure registration &nbsp;•&nbsp; 30-day money-back guarantee

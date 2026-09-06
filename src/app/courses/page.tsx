@@ -4,13 +4,11 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { courses, categories } from '@/data/courses';
 import CourseCard from '@/components/CourseCard/CourseCard';
-import { useCourseContext } from '@/context/CourseContext';
 import styles from './page.module.css';
 
 export default function CoursesPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('All');
-  const { totalCount } = useCourseContext();
 
   const filteredCourses = useMemo(() => {
     return courses.filter((course) => {
@@ -128,13 +126,6 @@ export default function CoursesPage() {
         </div>
       </div>
 
-      {/* Floating Selection Badge */}
-      {totalCount > 0 && (
-        <Link href="/selection" className="floating-badge" aria-label={`View selection: ${totalCount} courses`}>
-          <span>My Selection</span>
-          <span className="count">{totalCount}</span>
-        </Link>
-      )}
     </div>
   );
 }

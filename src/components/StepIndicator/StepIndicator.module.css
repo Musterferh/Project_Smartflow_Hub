@@ -80,16 +80,42 @@
 
 @media (max-width: 600px) {
   .connector {
-    width: 40px;
+    width: 32px;
+    margin: 0 6px 24px;
   }
 
   .label {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
   }
 
   .circle {
-    width: 38px;
-    height: 38px;
-    font-size: 0.9rem;
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .wrapper {
+    margin-bottom: 32px;
+  }
+
+  .connector {
+    width: 16px;
+    margin: 0 3px 20px;
+  }
+
+  .circle {
+    width: 30px;
+    height: 30px;
+    font-size: 0.78rem;
+  }
+
+  .label {
+    font-size: 0.65rem;
+    white-space: normal;
+    text-align: center;
+    max-width: 62px;
+    line-height: 1.2;
   }
 }

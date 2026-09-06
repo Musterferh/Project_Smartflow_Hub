@@ -55,10 +55,11 @@
   padding: 16px 20px 16px 52px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
-  font-size: 0.95rem;
+  font-size: 16px; /* Prevents auto-zoom on mobile iOS devices */
   background: rgba(255, 255, 255, 0.05);
   color: var(--white);
   transition: var(--transition);
+  box-sizing: border-box;
 }
 
 .searchInput::placeholder {
@@ -187,5 +188,36 @@
 
   .grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .controlsBar {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .searchInput {
+    padding: 13px 16px 13px 44px;
+  }
+
+  .searchIcon {
+    left: 14px;
+  }
+
+  .filterPills {
+    gap: 8px;
+  }
+
+  .pill {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .resultsBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }

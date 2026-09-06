@@ -307,3 +307,21 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 600px) {
+  .heroBanner {
+    height: 230px;
+  }
+
+  .bannerContent {
+    padding-bottom: 20px;
+  }
+
+  .courseTitle {
+    font-size: 1.4rem;
+  }
+
+  .card {
+    padding: 20px 16px;
+  }
+}

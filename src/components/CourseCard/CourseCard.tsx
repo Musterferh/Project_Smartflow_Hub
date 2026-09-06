@@ -3,8 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Course } from '@/types';
-import { useCourseContext } from '@/context/CourseContext';
-import { Star, User, Clock, Check, Plus } from 'lucide-react';
+import { Star, Clock, Check } from 'lucide-react';
 import styles from './CourseCard.module.css';
 
 function getCategoryBadgeClass(category: string): string {
@@ -21,18 +20,7 @@ function getLevelBadgeClass(level: string): string {
   return 'badge-level-advanced';
 }
 
-function renderStars(rating: number) {
-  const stars = [];
-  const full = Math.floor(rating);
-  for (let i = 0; i < 5; i++) {
-    stars.push(
-      <span key={i} className={i < full ? styles.starFilled : styles.starEmpty}>
-        <Star size={14} fill="currentColor" />
-      </span>
-    );
-  }
-  return stars;
-}
+
 
 interface CourseCardProps {
   course: Course;
@@ -40,23 +28,10 @@ interface CourseCardProps {
 }
 
 export default function CourseCard({ course, compact = false }: CourseCardProps) {
-  const { addCourse, removeCourse, isSelected } = useCourseContext();
-  const selected = isSelected(course.id);
-
-  const handleToggle = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (selected) {
-      removeCourse(course.id);
-    } else {
-      addCourse(course);
-    }
-  };
-
   return (
-    <div className={`${styles.card} ${selected ? styles.selected : ''}`}>
+    <div className={styles.card}>
       {/* Image */}
-<Link href={`/courses/${course.id}`} className={styles.imageLink}>
+      <Link href={`/courses/${course.id}`} className={styles.imageLink}>
         <div className={styles.imageWrapper}>
           <Image
             src={course.imageUrl}
@@ -93,15 +68,10 @@ export default function CourseCard({ course, compact = false }: CourseCardProps)
 
         {/* Meta */}
         <div className={styles.meta}>
-          <span className={styles.instructor}><User size={14} style={{ marginRight: '4px' }} /> {course.instructor}</span>
           <span className={styles.duration}><Clock size={14} style={{ marginRight: '4px' }} /> {course.duration}</span>
         </div>
 
-        {/* Rating */}
-        <div className={styles.ratingRow}>
-          <div className={styles.stars}>{renderStars(course.rating)}</div>
-          <span className={styles.ratingNum}>{course.rating}</span>
-        </div>
+
 
         {/* Footer */}
         <div className={styles.footer}>
@@ -113,14 +83,13 @@ export default function CourseCard({ course, compact = false }: CourseCardProps)
               )}
             </div>
           </div>
-          <button
-            type="button"
-            className={`${styles.toggleBtn} ${selected ? styles.selected : ''}`}
-            onClick={handleToggle}
-            aria-label={selected ? 'Remove from selection' : 'Add to selection'}
+          <Link
+            href={`/register?courseId=${course.id}`}
+            className={styles.toggleBtn}
+            aria-label={`Enroll in ${course.title}`}
           >
-            {selected ? <><Check size={16} style={{ marginRight: '4px' }} /> Selected</> : <><Plus size={16} style={{ marginRight: '4px' }} /> Select</>}
-          </button>
+            Enroll Now <Check size={16} style={{ marginLeft: '4px' }} />
+          </Link>
         </div>
       </div>
     </div>

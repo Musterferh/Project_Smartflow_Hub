@@ -5,9 +5,8 @@ import Image from 'next/image';
 import styles from './HeroSlider.module.css';
 
 const images = [
-  '/H.jpg',
   '/H2.jpg',
-  '/H5.jpg',
+  '/hub.jpg',
 ];
 
 export default function HeroSlider() {

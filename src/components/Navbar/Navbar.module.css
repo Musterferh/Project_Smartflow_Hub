@@ -1,27 +1,29 @@
 .navbar {
   position: fixed;
-  top: 24px;
+  top: 16px;
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 48px);
   max-width: 1200px;
   z-index: 1000;
-  background: rgba(15, 36, 68, 0.45);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(15, 36, 68, 0.35);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   border-radius: 100px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 12px 24px;
+  padding: 8px 20px;
 }
 
 .navbar.scrolled {
-  top: 16px;
-  background: rgba(9, 24, 41, 0.85);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.05);
-  padding: 8px 24px;
+  top: 10px;
+  background: rgba(9, 24, 41, 0.75);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+  padding: 6px 20px;
 }
 
 .inner {
@@ -55,7 +57,7 @@
 
 .logoMain {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 800;
   color: var(--white);
   letter-spacing: -0.02em;
@@ -63,7 +65,7 @@
 
 .logoSub {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 800;
   color: var(--gold);
   letter-spacing: -0.02em;
@@ -79,25 +81,50 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
+  gap: 8px;
+  padding: 8px 16px;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  border-radius: 100px;
-  transition: all 0.3s ease;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
+  overflow: hidden;
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
 }
 
 .navLink:hover {
   color: var(--white);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.navLink:hover::before {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .navLink.active {
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.15);
+  color: var(--gold);
+  background: rgba(255, 255, 255, 0.08);
   font-weight: 600;
+}
+
+.navLink.active::before {
+  transform: translateX(0);
+  opacity: 1;
+  background: var(--gold);
 }
 
 .navBadge {
@@ -117,13 +144,27 @@
   border-radius: 100px !important;
   padding: 10px 24px !important;
   font-weight: 700;
-  box-shadow: 0 4px 14px rgba(245, 166, 35, 0.3);
-  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--gold), #ff8c00);
+  color: var(--navy-dark);
+  box-shadow: 0 4px 14px rgba(245, 166, 35, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
 }
 
 .ctaBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.5);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.ctaIcon {
+  transition: transform 0.3s ease;
+}
+
+.ctaBtn:hover .ctaIcon {
+  transform: translateX(4px);
 }
 
 /* Hamburger */
@@ -160,17 +201,26 @@
 
 /* Mobile Menu */
 .mobileMenu {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 16px 24px 24px;
   max-height: 0;
+  padding: 0;
   overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mobileMenu.mobileOpen {
-  max-height: 400px;
+  max-height: 380px;
+  padding: 14px 4px 10px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .mobileLink {
@@ -195,20 +245,69 @@
 .mobileCta {
   margin-top: 12px;
   justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--gold), #ff8c00);
+  color: var(--navy-dark);
+  font-weight: 700;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 14px rgba(245, 166, 35, 0.3);
+  transition: all 0.3s ease;
+}
+
+.mobileCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.5);
+}
+
+.mobileCta:hover .ctaIcon {
+  transform: translateX(4px);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .navbar {
-    width: calc(100% - 32px);
-    top: 16px;
-    border-radius: 24px;
+    width: calc(100% - 24px);
+    top: 14px;
+    border-radius: 100px;
     padding: 12px 20px;
+    background: rgba(15, 36, 68, 0.65);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .navbar.navbarOpen {
+    border-radius: 24px;
+    background: rgba(9, 24, 41, 0.95);
+    padding: 14px 20px;
   }
 
   .navbar.scrolled {
-    top: 12px;
-    padding: 12px 20px;
+    top: 10px;
+    padding: 10px 18px;
+    background: rgba(9, 24, 41, 0.85);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logoImage {
+    width: 38px;
+    height: 38px;
+    padding: 3px;
+    border-radius: 10px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .logoMain,
+  .logoSub {
+    font-size: 1.05rem;
+    font-weight: 800;
   }
 
   .desktopNav {
@@ -217,9 +316,46 @@
 
   .hamburger {
     display: flex;
+    padding: 8px;
   }
 
-  .mobileMenu {
-    display: flex;
+  .hamburger span {
+    width: 24px;
+    height: 2.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    width: calc(100% - 16px);
+    top: 10px;
+    padding: 10px 16px;
+    border-radius: 100px;
+  }
+
+  .navbar.navbarOpen {
+    border-radius: 20px;
+    padding: 12px 16px;
+  }
+
+  .navbar.scrolled {
+    top: 8px;
+    padding: 9px 14px;
+  }
+
+  .logo {
+    gap: 8px;
+  }
+
+  .logoImage {
+    width: 34px;
+    height: 34px;
+    padding: 2.5px;
+    border-radius: 8px;
+  }
+
+  .logoMain,
+  .logoSub {
+    font-size: 0.98rem;
   }
 }

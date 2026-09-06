@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { featuredCourses, courses } from '@/data/courses';
 import CourseCard from '@/components/CourseCard/CourseCard';
 import HeroSlider from '@/components/HeroSlider/HeroSlider';
-import { Search, CheckCircle, GraduationCap, Rocket, ArrowRight } from 'lucide-react';
+import { Search, CheckCircle, GraduationCap, Rocket, ArrowRight, Lightbulb, Target, Users, Zap, Sparkles, ShieldCheck, Star, Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -13,55 +13,46 @@ export const metadata: Metadata = {
     'Register for world-class courses in technology, business, design, health, and personal development. Join 10,000+ learners at SMARTFLOW HUB.',
 };
 
-const stats = [
-  { value: '500+', label: 'Courses Available' },
-  { value: '10K+', label: 'Active Students' },
-  { value: '120+', label: 'Expert Instructors' },
-  { value: '95%', label: 'Completion Rate' },
-];
+
 
 const steps = [
   {
     icon: <Search size={32} />,
     title: 'Browse Courses',
-    description: 'Explore our curated catalog of expert-led courses across 5 categories.',
+    description: 'Explore our curated catalog of expert-led courses.',
   },
   {
     icon: <CheckCircle size={32} />,
-    title: 'Build Your Selection',
-    description: 'Add your favorite courses to your selection — mix and match freely.',
+    title: 'Select Your Course',
+    description: 'Select the course you want to enroll in.',
   },
   {
     icon: <GraduationCap size={32} />,
     title: 'Register & Learn',
-    description: 'Complete registration in minutes and start your learning journey immediately.',
+    description: 'Complete registration in minutes and start learning.',
   },
 ];
 
-const testimonials = [
+const coreAdvantages = [
   {
-    name: 'Yemi Adebayo',
-    role: 'Software Engineer',
-    text: 'SMARTFLOW HUB completely transformed my career. The Full-Stack bootcamp was rigorous, practical, and worth every penny.',
-    avatar: 'YA',
-    course: 'Full Stack Development',
-    verified: 'Verified Graduate',
+    title: 'Industry-Relevant Curriculum',
+    description: 'Our courses are constantly updated to reflect the latest trends, tools, and best practices used by top tech companies globally.',
+    icon: <Lightbulb size={36} />,
   },
   {
-    name: 'Chloe Beaumont',
-    role: 'UX Designer',
-    text: 'The UI/UX Design course gave me the confidence and portfolio pieces to land my dream job. The instructors are world-class.',
-    avatar: 'CB',
-    course: 'Advanced Web & UX',
-    verified: 'Verified Graduate',
+    title: 'Hands-on Project Experience',
+    description: 'Stop watching and start building. Every course includes real-world projects that you can immediately add to your professional portfolio.',
+    icon: <Target size={36} />,
   },
   {
-    name: 'Kwame Mensah',
-    role: 'Startup Founder',
-    text: 'The Startup Launch Accelerator was exactly what I needed. We secured our first round of funding three months after completing the program.',
-    avatar: 'KM',
-    course: 'Prompt Engineering & AI',
-    verified: 'Verified Alumni',
+    title: 'Expert Mentorship',
+    description: 'Learn directly from senior engineers, designers, and industry veterans who have built products used by millions.',
+    icon: <Users size={36} />,
+  },
+  {
+    title: 'Flexible Learning',
+    description: 'Access high-quality content anytime, anywhere. Our platform is designed to fit into your busy schedule without compromising quality.',
+    icon: <Zap size={36} />,
   },
 ];
 
@@ -73,7 +64,7 @@ export default function HomePage() {
         <HeroSlider />
         <div className={`container ${styles.heroContent}`}>
           <div className={styles.heroBadge}>
-            <Rocket size={16} style={{ marginRight: '8px' }} /> The Future of Online Learning
+            <Rocket size={16} style={{ marginRight: '8px' }} /> The Future Belongs to Those Who Build It
           </div>
           <h1 className={styles.heroTitle}>
             Unlock Your Potential with{' '}
@@ -84,52 +75,58 @@ export default function HomePage() {
             register with ease, and join a thriving community of ambitious learners.
           </p>
           <div className={styles.heroCtas}>
-            <Link href="/courses" className="btn btn-primary btn-lg">
+            <Link href="/#featured-courses" className="btn btn-primary btn-lg">
               Browse Courses <ArrowRight size={16} style={{ marginLeft: '8px' }} />
             </Link>
-            <Link href="/about" className="btn btn-outline btn-lg">
-              Learn More
+            <Link href="/#contact" className="btn btn-outline btn-lg">
+              Contact Us
             </Link>
           </div>
         </div>
 
-        {/* Stats Bar */}
-        <div className={styles.statsBar}>
-          <div className="container">
-            <div className={styles.statsGrid}>
-              {stats.map((stat) => (
-                <div key={stat.label} className={styles.stat}>
-                  <span className={styles.statValue}>{stat.value}</span>
-                  <span className={styles.statLabel}>{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+
       </section>
 
       {/* ====== ABOUT US SUMMARY ====== */}
       <section className={`section ${styles.aboutSection}`}>
-        <div className="container">
+        <div className={styles.aboutGlow} />
+        <div className={styles.aboutOrbTeal} />
+        <div className={styles.aboutOrbGold} />
+        <div className={styles.aboutGrid} />
+        <div className={styles.aboutAccentBar} />
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className={styles.aboutLayout}>
             <div className={styles.aboutText}>
-              <p className={styles.sectionEyebrow}>ABOUT US</p>
+              <div className={styles.aboutBadge}>
+                <Sparkles size={15} /> ABOUT SMARTFLOW HUB
+              </div>
               <h2 className="section-title">Transforming Lives Through Tech Education</h2>
-              <div className="divider" />
+              <div className={styles.aboutDivider} />
               <p className={styles.aboutBody}>
                 SMARTFLOW HUB is dedicated to providing high-quality, accessible education in technology and development. We bridge the gap between ambition and industry-ready skills.
               </p>
               <p className={styles.aboutBody}>
                 Whether you're starting from scratch with Basic Web Development, diving into AI, or mastering Full Stack Engineering, our curriculum is designed to help you succeed in the digital economy.
               </p>
-              <div style={{ marginTop: '16px' }}>
-                <Link href="/about" className="btn btn-primary">
-                  Read Our Full Story
-                </Link>
+
+              <div className={styles.aboutPillars}>
+                <div className={styles.aboutPillar}>
+                  <div className={styles.pillarIcon}><Sparkles size={16} /></div>
+                  <span>Project-Based Learning</span>
+                </div>
+                <div className={styles.aboutPillar}>
+                  <div className={styles.pillarIcon}><Target size={16} /></div>
+                  <span>Industry-Ready Skills</span>
+                </div>
+                <div className={styles.aboutPillar}>
+                  <div className={styles.pillarIcon}><ShieldCheck size={16} /></div>
+                  <span>Recognised Certificates</span>
+                </div>
               </div>
             </div>
-            
+
             <div className={styles.aboutVisual}>
+              <div className={styles.aboutImageBackdrop} />
               <div className={styles.aboutImageWrapper}>
                 <Image
                   src="/H8.jpg"
@@ -138,6 +135,21 @@ export default function HomePage() {
                   className={styles.aboutImage}
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
+                <div className={styles.aboutImageOverlay} />
+
+                <div className={styles.floatingTag}>
+                  <Zap size={14} /> 100% Practical Curriculum
+                </div>
+
+                <div className={styles.floatingCard}>
+                  <div className={styles.floatingCardIcon}>
+                    <GraduationCap size={22} />
+                  </div>
+                  <div>
+                    <div className={styles.floatingCardTitle}>Expert Mentors</div>
+                    <div className={styles.floatingCardSub}>Industry practitioners</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -145,11 +157,16 @@ export default function HomePage() {
       </section>
 
       {/* ====== FEATURED COURSES ====== */}
-      <section className={`section ${styles.featuredSection}`}>
+      <section id="featured-courses" className={`section ${styles.featuredSection}`}>
         <div className={styles.featuredGlow} />
+        <div className={styles.featuredOrb1} />
+        <div className={styles.featuredOrb2} />
+        <div className={styles.featuredGrid} />
+        <div className={styles.featuredAccentLeft} />
+        <div className={styles.featuredAccentRight} />
         <div className="container">
           <div className={`section-header ${styles.sectionHeader}`}>
-            <span className={styles.featuredBadge}>✨ HAND-PICKED FOR YOU</span>
+            <span className={styles.featuredBadge}><Sparkles size={16} style={{ marginRight: '6px' }} /> HAND-PICKED FOR YOU</span>
             <h2 className={`section-title ${styles.featuredTitle}`}>Featured Courses</h2>
             <div className={styles.featuredDivider} />
             <p className={styles.featuredSubtitle}>
@@ -174,10 +191,18 @@ export default function HomePage() {
 
       {/* ====== HOW IT WORKS ====== */}
       <section className={`section ${styles.howSection}`}>
+        <Image
+          src="/hub.jpg"
+          alt="How It Works Background"
+          fill
+          className={styles.howBgImage}
+          sizes="100vw"
+        />
+        <div className={styles.howBgOverlay} />
         <div className={styles.howGlow} />
-        <div className="container">
+        <div className="container" style={{ position: 'relative', zIndex: 3 }}>
           <div className={`section-header ${styles.sectionHeader}`}>
-            <span className={styles.howBadge}>⚡ SIMPLE PROCESS</span>
+            <span className={styles.howBadge}><Zap size={16} style={{ marginRight: '6px' }} /> SIMPLE PROCESS</span>
             <h2 className={`section-title ${styles.howTitle}`}>How It Works</h2>
             <div className={styles.howDivider} />
             <p className={styles.howSubtitle}>
@@ -205,43 +230,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ====== TESTIMONIALS ====== */}
-      <section className={`section ${styles.testimonialSection}`}>
-        <div className={styles.testimonialGlow} />
-        <div className={styles.testimonialOrb} />
-        <div className="container">
+      {/* ====== CORE ADVANTAGES ====== */}
+      <section className={`section ${styles.advantagesSection}`}>
+        <Image
+          src="/H9.jpg"
+          alt="Core Advantages Background"
+          fill
+          className={styles.advantagesBgImage}
+          sizes="100vw"
+        />
+        <div className={styles.advantagesBgOverlay} />
+        <div className={styles.advantagesGlow} />
+        <div className="container" style={{ position: 'relative', zIndex: 3 }}>
           <div className={`section-header ${styles.sectionHeader}`}>
-            <span className={styles.testimonialBadge}>💬 STUDENT STORIES</span>
-            <h2 className={`section-title ${styles.lightTitle}`}>What Our Students Say</h2>
-            <div className={styles.testimonialDivider} />
-            <p className={styles.testimonialSubtitle}>
-              Real stories from ambitious learners who transformed their skills and landed dream roles with SMARTFLOW HUB.
+            <span className={styles.advantagesBadge}><Star size={16} style={{ marginRight: '6px' }} /> WHY CHOOSE US</span>
+            <h2 className={`section-title ${styles.lightTitle}`}>Our Core Advantages</h2>
+            <div className={styles.advantagesDivider} />
+            <p className={styles.advantagesSubtitle}>
+              We provide everything you need to accelerate your career and master in-demand tech skills.
             </p>
           </div>
 
-          <div className={styles.testimonialGrid}>
-            {testimonials.map((t) => (
-              <div key={t.name} className={styles.testimonialCard}>
-                <div className={styles.cardHeader}>
-                  <div className={styles.testimonialStars}>
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                  </div>
-                  <span className={styles.verifiedBadge}>✓ {t.verified}</span>
+          <div className={styles.advantagesGrid}>
+            {coreAdvantages.map((adv) => (
+              <div key={adv.title} className={styles.advantageCard}>
+                <div className={styles.advantageIconWrapper}>
+                  {adv.icon}
                 </div>
-                <p className={styles.testimonialText}>"{t.text}"</p>
-                <div className={styles.courseTag}>
-                  <span>🎓 Course:</span> <strong>{t.course}</strong>
-                </div>
-                <div className={styles.testimonialAuthor}>
-                  <div className={styles.avatarWrapper}>
-                    <div className={styles.avatar}>{t.avatar}</div>
-                    <span className={styles.onlineDot} />
-                  </div>
-                  <div className={styles.authorMeta}>
-                    <div className={styles.authorName}>{t.name}</div>
-                    <div className={styles.authorRole}>{t.role}</div>
-                  </div>
-                </div>
+                <h3 className={styles.advantageTitle}>{adv.title}</h3>
+                <p className={styles.advantageText}>{adv.description}</p>
               </div>
             ))}
           </div>
@@ -250,45 +267,177 @@ export default function HomePage() {
 
       {/* ====== CTA SECTION ====== */}
       <section className={styles.ctaSection}>
+        <div className={styles.ctaSectionBg}>
+          <Image
+            src="/hub.jpg"
+            alt="Smartflow Hub"
+            fill
+            className={styles.ctaBgImage}
+            sizes="100vw"
+          />
+          <div className={styles.ctaSectionOverlay} />
+        </div>
+
         <div className="container">
-          <div className={styles.ctaBox}>
-            <div className={styles.ctaGlow} />
-            <div className={styles.ctaOrb1} />
-            <div className={styles.ctaOrb2} />
-            
-            <div className={styles.ctaBadgeWrapper}>
-              <span className={styles.ctaBadge}>🚀 TAKE THE NEXT STEP</span>
-              <span className={styles.ctaLiveCount}>● 10,000+ Enrolled</span>
+          <div className={styles.ctaInner}>
+
+            {/* Left: Text content */}
+            <div className={styles.ctaLeft}>
+              <div className={styles.ctaBadgeRow}>
+                <span className={styles.ctaBadge}>
+                  <Rocket size={14} /> TAKE THE NEXT STEP
+                </span>
+              </div>
+
+              <h2 className={styles.ctaTitle}>
+                Ready to <span className={styles.ctaHighlight}>Start Learning?</span>
+              </h2>
+              <p className={styles.ctaSubtitle}>
+                Join thousands of ambitious professionals transforming their careers with SMARTFLOW HUB — from zero to job-ready.
+              </p>
+
+              <div className={styles.ctaBtns}>
+                <Link href="/courses" className={styles.ctaPrimaryBtn}>
+                  <span>Explore Courses</span>
+                  <ArrowRight size={18} className={styles.ctaArrow} />
+                </Link>
+                <Link href="/register" className={styles.ctaSecondaryBtn}>
+                  <span>Register Free</span>
+                  <Sparkles size={16} />
+                </Link>
+              </div>
             </div>
 
-            <h2 className={styles.ctaTitle}>
-              Ready to <span className={styles.ctaHighlight}>Start Learning?</span>
-            </h2>
-            
-            <div className={styles.ctaBtns}>
-              <Link href="/courses" className={styles.ctaPrimaryBtn}>
-                <span>Explore Courses</span>
-                <span className={styles.ctaArrow}>→</span>
-              </Link>
-              <Link href="/register" className={styles.ctaSecondaryBtn}>
-                <span>Register Free</span>
-                <span className={styles.ctaSparkle}>✨</span>
-              </Link>
+            {/* Right: Feature cards */}
+            <div className={styles.ctaRight}>
+              <div className={styles.ctaFeatureCard}>
+                <div className={styles.ctaFeatureIconBox}>
+                  <Zap size={24} />
+                </div>
+                <div>
+                  <div className={styles.ctaFeatureTitle}>Instant Lifetime Access</div>
+                  <div className={styles.ctaFeatureDesc}>Learn anytime, on any device, forever.</div>
+                </div>
+              </div>
+              <div className={styles.ctaFeatureCard}>
+                <div className={styles.ctaFeatureIconBox}>
+                  <GraduationCap size={24} />
+                </div>
+                <div>
+                  <div className={styles.ctaFeatureTitle}>Verified Certificate</div>
+                  <div className={styles.ctaFeatureDesc}>Industry-recognised upon completion.</div>
+                </div>
+              </div>
+              <div className={styles.ctaFeatureCard}>
+                <div className={styles.ctaFeatureIconBox}>
+                  <ShieldCheck size={24} />
+                </div>
+                <div>
+                  <div className={styles.ctaFeatureTitle}>100% Risk Free</div>
+                  <div className={styles.ctaFeatureDesc}>Full satisfaction guaranteed, no questions asked.</div>
+                </div>
+              </div>
             </div>
 
-            <div className={styles.ctaFeaturesGrid}>
-              <div className={styles.ctaFeatureCard}>
-                <span className={styles.ctaFeatureIcon}>⚡</span>
-                <span className={styles.ctaFeatureText}>Instant Lifetime Access</span>
+          </div>
+        </div>
+      </section>
+      {/* ====== CONTACT SECTION ====== */}
+      <section className={`section ${styles.contactSection}`} id="contact">
+        <div className={styles.contactGlow} />
+        <div className="container">
+          <div className={`section-header ${styles.sectionHeader}`}>
+            <span className={styles.contactBadge}><MessageSquare size={16} style={{ marginRight: '6px' }} /> GET IN TOUCH</span>
+            <h2 className={`section-title ${styles.lightTitle}`}>Let's Start a Conversation</h2>
+            <div className={styles.contactDivider} />
+            <p className={styles.contactSubtitle}>
+              We're a small, dedicated team — every message is welcomed and replied to personally.
+            </p>
+          </div>
+
+          <div className={styles.contactGrid}>
+            {/* Contact Details */}
+            <div className={styles.contactInfo}>
+              <div className={styles.infoCard}>
+                <div className={styles.infoIcon}><Mail size={24} /></div>
+                <div className={styles.infoContent}>
+                  <h4 className={styles.infoTitle}>Email</h4>
+                  <p className={styles.infoText}>info@smartflowgroupltd.com</p>
+                </div>
               </div>
-              <div className={styles.ctaFeatureCard}>
-                <span className={styles.ctaFeatureIcon}>🎓</span>
-                <span className={styles.ctaFeatureText}>Verified Certificate</span>
+
+              <div className={styles.infoCard}>
+                <div className={styles.infoIcon}><Phone size={24} /></div>
+                <div className={styles.infoContent}>
+                  <h4 className={styles.infoTitle}>WhatsApp</h4>
+                  <p className={styles.infoText}>+234 815 418 4722</p>
+                  <p className={styles.infoSubtext}>Mon-Fri, 9am-5pm</p>
+                </div>
               </div>
-              <div className={styles.ctaFeatureCard}>
-                <span className={styles.ctaFeatureIcon}>🔒</span>
-                <span className={styles.ctaFeatureText}>100% Risk Free Guarantee</span>
+
+              <div className={styles.infoCard}>
+                <div className={styles.infoIcon}><MapPin size={24} /></div>
+                <div className={styles.infoContent}>
+                  <h4 className={styles.infoTitle}>Office</h4>
+                  <p className={styles.infoText}>NO.B5 HD Plaza, Ahmadu Bello Way, Bauchi Bauchi State</p>
+                  <p className={styles.infoSubtext}>Mon-Fri: 9:00 AM - 5:00 PM</p>
+                </div>
               </div>
+
+              <div className={styles.socialCard}>
+                <h4 className={styles.infoTitle}>Follow Us</h4>
+                <a href="https://wa.me/2348154184722" target="_blank" rel="noopener noreferrer" className={`btn btn-primary ${styles.whatsappBtn}`}>
+                  <MessageSquare size={18} />
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div className={styles.contactFormWrapper}>
+              <h3 className={styles.formTitle}>Send Us a Message</h3>
+              <form className={styles.contactForm}>
+                <div className={styles.formRow}>
+                  <div className={styles.formGroup}>
+                    <label>First Name *</label>
+                    <input type="text" className="form-input" required placeholder="e.g. John" />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>Last Name *</label>
+                    <input type="text" className="form-input" required placeholder="e.g. Doe" />
+                  </div>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label>Email Address *</label>
+                  <input type="email" className="form-input" required placeholder="john@example.com" />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label>Phone / WhatsApp (optional)</label>
+                  <input type="tel" className="form-input" placeholder="+234 ..." />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label>Type of Enquiry *</label>
+                  <select className="form-input" required defaultValue="">
+                    <option value="" disabled>Select an option...</option>
+                    <option value="enrollment">Program Enrollment</option>
+                    <option value="support">General Support</option>
+                    <option value="partnership">Partnership</option>
+                  </select>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label>Your Message *</label>
+                  <textarea className="form-input" required rows={5} placeholder="How can we help you?"></textarea>
+                </div>
+
+                <button type="submit" className={`btn btn-primary ${styles.submitBtn}`}>
+                  <span>Send Message</span>
+                  <Send size={18} />
+                </button>
+              </form>
             </div>
           </div>
         </div>

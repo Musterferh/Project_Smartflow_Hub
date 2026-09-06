@@ -4,12 +4,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { useCourseContext } from '@/context/CourseContext';
+import { Home, BookOpen, Phone, ChevronRight } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { totalCount } = useCourseContext();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -24,18 +23,17 @@ export default function Navbar() {
   }, [pathname]);
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/courses', label: 'Courses' },
-    { href: '/selection', label: 'My Selection' },
-    { href: '/about', label: 'About' },
+    { href: '/', label: 'Home', Icon: Home },
+    { href: '/courses', label: 'Courses', Icon: BookOpen },
+    { href: '/#contact', label: 'Contact Us', Icon: Phone },
   ];
 
   return (
-    <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+    <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${menuOpen ? styles.navbarOpen : ''}`}>
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          <Image src="/logo.png" alt="SMARTFLOW HUB Logo" width={64} height={64} className={styles.logoImage} />
+          <Image src="/logo.png" alt="SMARTFLOW HUB Logo" width={40} height={40} className={styles.logoImage} />
           <span>
             <span className={styles.logoMain}>SMARTFLOW</span>
             <span className={styles.logoSub}> HUB</span>
@@ -44,20 +42,19 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <nav className={styles.desktopNav}>
-          {navLinks.map((link) => (
+          {navLinks.map(({ href, label, Icon }) => (
             <Link
-              key={link.href}
-              href={link.href}
-              className={`${styles.navLink} ${pathname === link.href ? styles.active : ''}`}
+              key={href}
+              href={href}
+              className={`${styles.navLink} ${pathname === href ? styles.active : ''}`}
             >
-              {link.label}
-              {link.href === '/selection' && totalCount > 0 && (
-                <span className={styles.navBadge}>{totalCount}</span>
-              )}
+              <Icon size={16} />
+              <span className={styles.navLabel}>{label}</span>
             </Link>
           ))}
-          <Link href="/register" className={`btn btn-primary btn-sm ${styles.ctaBtn}`}>
-            Register Now
+          <Link href="/#featured-courses" className={`btn btn-primary btn-sm ${styles.ctaBtn}`}>
+            <span>Register Now</span>
+            <ChevronRight size={16} className={styles.ctaIcon} />
           </Link>
         </nav>
 
@@ -75,20 +72,19 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileOpen : ''}`}>
-        {navLinks.map((link) => (
+        {navLinks.map(({ href, label, Icon }) => (
           <Link
-            key={link.href}
-            href={link.href}
-            className={`${styles.mobileLink} ${pathname === link.href ? styles.active : ''}`}
+            key={href}
+            href={href}
+            className={`${styles.mobileLink} ${pathname === href ? styles.active : ''}`}
           >
-            {link.label}
-            {link.href === '/selection' && totalCount > 0 && (
-              <span className={styles.navBadge}>{totalCount}</span>
-            )}
+            <Icon size={18} />
+            <span>{label}</span>
           </Link>
         ))}
-        <Link href="/register" className={`btn btn-primary ${styles.mobileCta}`}>
-          Register Now
+        <Link href="/#featured-courses" className={`btn btn-primary ${styles.mobileCta}`}>
+          <span>Register Now</span>
+          <ChevronRight size={18} className={styles.ctaIcon} />
         </Link>
       </div>
     </header>
