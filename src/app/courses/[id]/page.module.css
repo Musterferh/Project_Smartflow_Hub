@@ -1,12 +1,15 @@
 .page {
   padding-bottom: 80px;
+  background-color: var(--bg);
+  min-height: 100vh;
 }
 
 /* Breadcrumb */
 .breadcrumb {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
+  background: rgba(15, 36, 68, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding: 14px 0;
+  backdrop-filter: blur(10px);
 }
 
 .breadcrumb > div {
@@ -17,23 +20,23 @@
 }
 
 .backLink {
-  color: var(--gold-dark);
+  color: var(--gold);
   font-weight: 600;
   font-size: 0.9rem;
   transition: var(--transition);
 }
 
 .backLink:hover {
-  color: var(--navy);
+  color: var(--gold-light);
 }
 
 .breadcrumbSep {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.4);
   font-size: 0.9rem;
 }
 
 .breadcrumbCurrent {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -55,7 +58,7 @@
 .bannerOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(9,24,41,0.88) 0%, rgba(9,24,41,0.5) 60%, transparent 100%);
+  background: linear-gradient(to right, rgba(9, 24, 41, 0.92) 0%, rgba(9, 24, 41, 0.65) 60%, rgba(9, 24, 41, 0.4) 100%);
 }
 
 .bannerContent {
@@ -73,14 +76,15 @@
 }
 
 .courseTitle {
-  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
   color: var(--white);
-  max-width: 700px;
+  max-width: 750px;
   line-height: 1.2;
+  font-weight: 800;
 }
 
 .courseMeta {
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.95rem;
   font-weight: 500;
 }
@@ -88,7 +92,7 @@
 /* Layout */
 .layout {
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr 350px;
   gap: 32px;
   margin-top: 40px;
   align-items: start;
@@ -97,66 +101,78 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
 }
 
+/* Content Cards (About This Course & What You'll Learn) */
 .card {
-  background: var(--white);
-  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, rgba(15, 36, 68, 0.75) 0%, rgba(9, 24, 41, 0.85) 100%);
+  border-radius: var(--radius-lg);
   padding: 32px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .sectionTitle {
-  font-size: 1.3rem;
-  color: var(--navy);
+  font-size: 1.4rem;
+  color: var(--white);
   margin-bottom: 16px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .description {
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.8;
-  font-size: 0.975rem;
+  font-size: 1.02rem;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 20px;
+  gap: 10px;
+  margin-top: 24px;
 }
 
 .tag {
-  padding: 6px 14px;
-  background: var(--bg);
+  padding: 6px 16px;
+  background: rgba(0, 191, 165, 0.12);
   border-radius: 100px;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
+  color: #00e6c6;
+  border: 1px solid rgba(0, 191, 165, 0.3);
 }
 
 .learnList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   list-style: none;
 }
 
 .learnList li {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
+  font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.88);
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 12px;
+  line-height: 1.6;
 }
 
-/* Related */
+/* Related Section */
 .relatedSection {
   background: transparent;
   padding: 0;
+  margin-top: 12px;
+}
+
+.relatedSection .sectionTitle {
+  font-size: 1.35rem;
+  color: var(--white);
+  margin-bottom: 20px;
 }
 
 .relatedGrid {
@@ -165,22 +181,24 @@
   gap: 20px;
 }
 
-/* Sidebar */
+/* Sidebar Sticky Card */
 .sidebar {
-  /* sticky handled by position */
+  /* sticky container */
 }
 
 .stickyCard {
   position: sticky;
-  top: 88px;
-  background: var(--white);
-  border-radius: var(--radius-md);
-  padding: 28px;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border);
+  top: 96px;
+  background: linear-gradient(145deg, rgba(15, 36, 68, 0.9) 0%, rgba(9, 24, 41, 0.95) 100%);
+  border-radius: var(--radius-lg);
+  padding: 30px 28px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
 }
 
 .priceRow {
@@ -196,15 +214,16 @@
 }
 
 .price {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   font-weight: 900;
-  color: var(--navy);
+  color: var(--gold);
   line-height: 1;
+  font-family: var(--font-heading);
 }
 
 .originalPrice {
-  font-size: 1.1rem;
-  color: #e53e3e; /* Red color for original price */
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.45);
   text-decoration: line-through;
   font-weight: 600;
 }
@@ -217,75 +236,71 @@
 
 .stars {
   color: var(--gold);
-  font-size: 0.95rem;
+  display: flex;
+  gap: 2px;
 }
 
 .ratingValue {
   font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--gold-dark);
+  font-size: 0.95rem;
+  color: var(--gold-light);
 }
 
 .metaList {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding-top: 4px;
-  border-top: 1px solid var(--border);
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .metaItem {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  gap: 14px;
 }
 
 .metaIcon {
-  font-size: 1.2rem;
-  margin-top: 2px;
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(0, 191, 165, 0.12);
+  border: 1px solid rgba(0, 191, 165, 0.25);
+  flex-shrink: 0;
 }
 
 .metaLabel {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.55);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
 
 .metaValue {
   font-size: 0.95rem;
-  color: var(--text-primary);
-  font-weight: 600;
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .addBtn {
   width: 100%;
+  display: flex;
   justify-content: center;
-}
-
-.selectedBtn {
-  background: var(--gold);
-  color: var(--navy-dark);
-  font-weight: 700;
-  padding: 16px 36px;
+  align-items: center;
+  padding: 16px;
   font-size: 1.05rem;
-  border-radius: var(--radius-sm);
-  border: none;
-  cursor: pointer;
-  transition: var(--transition);
-  width: 100%;
-}
-
-.viewSelectionBtn {
-  width: 100%;
-  justify-content: center;
 }
 
 .moneyBack {
-  font-size: 0.78rem;
-  color: var(--text-muted);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
   text-align: center;
+  line-height: 1.5;
 }
 
 /* Responsive */
@@ -310,18 +325,26 @@
 
 @media (max-width: 600px) {
   .heroBanner {
-    height: 230px;
+    height: 240px;
   }
 
   .bannerContent {
-    padding-bottom: 20px;
+    padding-bottom: 24px;
   }
 
   .courseTitle {
-    font-size: 1.4rem;
+    font-size: 1.45rem;
   }
 
   .card {
-    padding: 20px 16px;
+    padding: 24px 18px;
+  }
+
+  .stickyCard {
+    padding: 24px 18px;
+  }
+
+  .price {
+    font-size: 2rem;
   }
 }
