@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { featuredCourses, courses } from '@/data/courses';
 import CourseCard from '@/components/CourseCard/CourseCard';
 import HeroSlider from '@/components/HeroSlider/HeroSlider';
+import ContactForm from '@/components/ContactForm/ContactForm';
 import { Search, CheckCircle, GraduationCap, Rocket, ArrowRight, Lightbulb, Target, Users, Zap, Sparkles, ShieldCheck, Star, Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
 import styles from './page.module.css';
 
@@ -394,51 +395,7 @@ export default function HomePage() {
             </div>
 
             {/* Contact Form */}
-            <div className={styles.contactFormWrapper}>
-              <h3 className={styles.formTitle}>Send Us a Message</h3>
-              <form className={styles.contactForm}>
-                <div className={styles.formRow}>
-                  <div className={styles.formGroup}>
-                    <label>First Name *</label>
-                    <input type="text" className="form-input" required placeholder="e.g. John" />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label>Last Name *</label>
-                    <input type="text" className="form-input" required placeholder="e.g. Doe" />
-                  </div>
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label>Email Address *</label>
-                  <input type="email" className="form-input" required placeholder="john@example.com" />
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label>Phone / WhatsApp (optional)</label>
-                  <input type="tel" className="form-input" placeholder="+234 ..." />
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label>Type of Enquiry *</label>
-                  <select className="form-input" required defaultValue="">
-                    <option value="" disabled>Select an option...</option>
-                    <option value="enrollment">Program Enrollment</option>
-                    <option value="support">General Support</option>
-                    <option value="partnership">Partnership</option>
-                  </select>
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label>Your Message *</label>
-                  <textarea className="form-input" required rows={5} placeholder="How can we help you?"></textarea>
-                </div>
-
-                <button type="submit" className={`btn btn-primary ${styles.submitBtn}`}>
-                  <span>Send Message</span>
-                  <Send size={18} />
-                </button>
-              </form>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
