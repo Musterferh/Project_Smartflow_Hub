@@ -18,22 +18,34 @@ export async function POST(req: Request) {
       );
     }
 
-    const staticFormsKey = process.env.STATICFORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_STATICFORMS_KEY;
+    const staticFormsKey =
+      process.env.STATICFORMS_API_KEY ||
+      process.env.STATICFORMS_ACCESS_KEY ||
+      process.env.NEXT_PUBLIC_STATICFORMS_KEY ||
+      'sf_8d51b443f01ef2e140ba86a0';
 
-    // 1. Try StaticForms if an access key is configured
+    // 1. Send via StaticForms (https://api.staticforms.dev/submit)
     if (staticFormsKey) {
       try {
-        const sfRes = await fetch('https://api.staticforms.xyz/submit', {
+        const sfMessage = [
+          phone ? `Phone / WhatsApp: ${phone}` : null,
+          enquiryType ? `Type of Enquiry: ${enquiryType}` : null,
+          '',
+          'Message:',
+          message,
+        ]
+          .filter((line) => line !== null)
+          .join('\n');
+
+        const sfRes = await fetch('https://api.staticforms.dev/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            accessKey: staticFormsKey,
+            apiKey: staticFormsKey,
+            subject: `Smartflow group submission - [${(enquiryType || 'General').toUpperCase()}] from ${name}`,
             name,
             email,
-            phone: phone || 'N/A',
-            subject: `[SMARTFLOW HUB] Enquiry: ${enquiryType || 'General'} from ${name}`,
-            message,
-            replyTo: '@',
+            message: sfMessage,
           }),
         });
 
@@ -41,7 +53,7 @@ export async function POST(req: Request) {
         if (sfData.success) {
           return NextResponse.json({ success: true, provider: 'staticforms' });
         }
-        console.warn('StaticForms submission error, falling back to Resend:', sfData);
+        console.warn('StaticForms error response, attempting Resend fallback:', sfData);
       } catch (sfErr) {
         console.warn('StaticForms fetch failed, falling back to Resend:', sfErr);
       }
