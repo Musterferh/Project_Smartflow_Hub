@@ -182,7 +182,7 @@ export default function CourseDetailPage({ params }: PageProps) {
               </Link>
 
               <p className={styles.moneyBack}>
-                <Lock size={14} style={{ marginRight: '4px', verticalAlign: 'middle' }} /> Secure registration &nbsp;•&nbsp; 30-day money-back guarantee
+                <Lock size={14} style={{ marginRight: '4px', verticalAlign: 'middle' }} /> Secure registration
               </p>
             </div>
           </aside>
