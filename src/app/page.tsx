@@ -68,8 +68,10 @@ export default function HomePage() {
             <Rocket size={16} style={{ marginRight: '8px' }} /> The Future Belongs to Those Who Build It
           </div>
           <h1 className={styles.heroTitle}>
-            Unlock Your Potential with{' '}
-            <span className={styles.heroHighlight}>SMARTFLOW HUB</span>
+            <span className={styles.heroLead}>Unlock Your Potential</span>{' '}
+            <span className={styles.heroTagline}>
+              with <span className={styles.heroHighlight}>SMARTFLOW HUB</span>
+            </span>
           </h1>
           <p className={styles.heroSubtitle}>
             World-class courses designed by industry experts. Learn at your own pace,
