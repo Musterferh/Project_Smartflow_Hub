@@ -327,9 +327,9 @@
 
 @media (max-width: 480px) {
   .navbar {
-    width: calc(100% - 16px);
+    width: calc(100% - 20px);
     top: 10px;
-    padding: 10px 16px;
+    padding: 9px 14px;
     border-radius: 100px;
   }
 
@@ -356,6 +356,27 @@
 
   .logoMain,
   .logoSub {
-    font-size: 0.98rem;
+    font-size: 0.94rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar {
+    width: calc(100% - 16px);
+    padding: 8px 12px;
+  }
+
+  .logoImage {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logoMain,
+  .logoSub {
+    font-size: 0.84rem;
+  }
+
+  .hamburger {
+    padding: 6px;
   }
 }
